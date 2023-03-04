@@ -1,0 +1,40 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row no-gutter">
+        <div class="col-md-12">
+            <div class="payment d-flex align-items-center py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-lg-6 mx-auto">
+            
+                        <script src="https://js.paystack.co/v1/inline.js"></script> 
+                        <button class="btn btn-large btn-success" onclick="payWithPaystack()">Pay with Paystack</button>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+  
+  </div>
+  <script>
+    function payWithPaystack() {
+        let reference = "{{ payment.reference }}"
+        let obj = {
+            key: "{{ public_key }}",
+            email: "{{ payment.email }}",
+            amount: "{{ payment.convert_amount }}",
+            reference: reference,
+            callback: function(response){
+                window.location.href = "{% url 'paymentpages:payments-verify' payment.reference %}"
+            }  
+        }
+        var handler = PaystackPop.setup(obj);
+        handler.openIframe();
+    }
+  </script>
+
+{% endblock %}
