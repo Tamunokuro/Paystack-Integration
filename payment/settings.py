@@ -81,14 +81,15 @@ WSGI_APPLICATION = 'payment.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': 'paystackdb',
-    #     'USER': 'postgres',
-    #     'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
-    #     'HOST': os.environ.get('DATABASE_HOST'),
-    #     'PORT': os.environ.get('PORT')
-    # }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'URL': 'postgresql://postgres:CijTxAmgyT2D43GiKCWy@containers-us-west-29.railway.app:6067/railway',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'CijTxAmgyT2D43GiKCWy',
+        'HOST': 'containers-us-west-29.railway.app',
+        'PORT': '6067'
+    }
 }
 
 
