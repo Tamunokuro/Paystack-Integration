@@ -81,14 +81,14 @@ WSGI_APPLICATION = 'payment.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': 'paystackdb',
-    #     'USER': 'postgres',
-    #     'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
-    #     'HOST': os.environ.get('DATABASE_HOST'),
-    #     'PORT': os.environ.get('PORT')
-    # }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'paystackdb',
+        'USER': 'postgres',
+        'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
+        'HOST': os.environ.get('DATABASE_HOST'),
+        'PORT': os.environ.get('PORT')
+    }
 }
 
 
