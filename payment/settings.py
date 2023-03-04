@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
+import dj_database_url
+from decouple import config
 from dotenv import load_dotenv
 from pathlib import Path
 
@@ -82,15 +84,12 @@ WSGI_APPLICATION = 'payment.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'URL': 'postgresql://postgres:CijTxAmgyT2D43GiKCWy@containers-us-west-29.railway.app:6067/railway',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'CijTxAmgyT2D43GiKCWy',
-        'HOST': 'containers-us-west-29.railway.app',
-        'PORT': '6067'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3' 
     }
 }
+
+DATABASES['default'] = dj_database_url.config()
 
 
 # Password validation
