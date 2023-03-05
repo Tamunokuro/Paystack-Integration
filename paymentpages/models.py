@@ -34,9 +34,9 @@ class Payments(models.Model):
                 self.verified = True
             self.save()
 
-            if self.verified:
-                return True
-            return False
+        if self.verified:
+            return True
+        return False
 
 
 

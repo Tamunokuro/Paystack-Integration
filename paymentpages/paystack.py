@@ -9,7 +9,7 @@ class Paystack:
         path = f'/transaction/verify/{reference}'
 
         headers = {
-            "Authorization": f'Bearer {self.SECRET_KEY}',
+            "Authorization": f"Bearer {self.SECRET_KEY}",
             "Content-Type": "application/json",
         }
 
