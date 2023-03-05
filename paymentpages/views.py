@@ -5,6 +5,7 @@ from django.conf import settings
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
 from .models import Payments
+from pypaystack import Transaction
 
 # Create your views here.
 def initialize_payments(request: HttpRequest) -> HttpResponse:
@@ -22,26 +23,11 @@ def initialize_payments(request: HttpRequest) -> HttpResponse:
 
 
 def payments_verify(request: HttpRequest, reference: str) -> HttpResponse:
-    payment_obj = get_object_or_404(Payments, reference=reference)
-    payment_verified = payment_obj.verify()
+    payment_obj = Transaction(authorization_key=settings.SECRET_KEY)
+    payment_verified = payment_obj.verify(reference)
     if payment_verified:
         messages.success(request, "Verification successful")
     else:
-        messages.error(request, "Verifcation failed")
+        messages.error(request, "Verification failed")
     return redirect('paymentpages:initialize_payment')
 
-
-def page_list(request):
-    pass
-
-def page(request):
-    pass
-
-def updatepage(request):
-    pass
-
-def slug_availability(request):
-    pass
-
-def add_product(request):
-    pass

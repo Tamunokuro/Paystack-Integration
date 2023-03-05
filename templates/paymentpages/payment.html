@@ -24,7 +24,7 @@
     function payWithPaystack() {
         let reference = "{{ payment.reference }}"
         let obj = {
-            key: "{{ public_key }}",
+            key: "{{public_key}}",
             email: "{{ payment.email }}",
             amount: "{{ payment.convert_amount }}",
             reference: reference,
