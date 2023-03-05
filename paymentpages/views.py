@@ -5,6 +5,7 @@ from django.conf import settings
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
 from .models import Payments
+from paystackapi.paystack import Paystack
 
 # Create your views here.
 def initialize_payments(request: HttpRequest) -> HttpResponse:
@@ -22,9 +23,9 @@ def initialize_payments(request: HttpRequest) -> HttpResponse:
 
 
 def payments_verify(request: HttpRequest, reference: str) -> HttpResponse:
-    payment_obj = get_object_or_404(Payments, reference=reference)
-    payment_verified = payment_obj.verify()
-    if payment_verified:
+    paystack = Paystack(secret_key=settings.PUBLIC_KEY)
+    payment = paystack.transaction.verify(reference)
+    if payment:
         messages.success(request, "Verification successful")
     else:
         messages.error(request, "Verifcation failed")
