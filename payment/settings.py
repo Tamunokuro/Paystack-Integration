@@ -135,7 +135,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #PAYSTACK KEYS
 SECRET_KEY = os.environ.get('SECRET_KEY')
 PUBLIC_KEY = os.environ.get('PUBLIC_KEY')
-
-# Simplified static file serving.
-# https://pypi.org/project/whitenoise/
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
