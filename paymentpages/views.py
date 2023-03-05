@@ -5,7 +5,7 @@ from django.conf import settings
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
 from .models import Payments
-from pypaystack import Transaction
+from pypaystack import Transaction, Customer, Plan
 
 # Create your views here.
 def initialize_payments(request: HttpRequest) -> HttpResponse:
