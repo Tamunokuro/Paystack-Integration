@@ -27,5 +27,4 @@
           "dest": "payment/wsgi.py"
       }
   ]
-
 }

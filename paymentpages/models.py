@@ -28,7 +28,6 @@ class Payments(models.Model):
             if result['amount'] == self.amount:
                 self.verified = True
             self.save()
-
         if self.verified:
             return True
         return False
