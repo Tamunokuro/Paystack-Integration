@@ -1,5 +1,4 @@
 from django import forms
-
 from .models import Payments
 
 class PaymentsForm(forms.ModelForm):
@@ -11,11 +10,9 @@ class PaymentsForm(forms.ModelForm):
         'class': 'form-control mb-3',
         'placeholder': 'Amount',
         'id': 'form-amount'}))
-    
     class Meta:
         model = Payments
         fields = ("email", "amount",)
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['email'].error_messages = {

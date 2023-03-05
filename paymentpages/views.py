@@ -21,7 +21,6 @@ def initialize_payments(request: HttpRequest) -> HttpResponse:
         payment_form = forms.PaymentsForm()
     return render(request, 'paymentpages/create_payment.html', {'form': payment_form})
 
-
 def payments_verify(request: HttpRequest, reference: str) -> HttpResponse:
     paystack = Paystack(secret_key=settings.PUBLIC_KEY)
     payment = paystack.transaction.verify(reference)
@@ -31,18 +30,3 @@ def payments_verify(request: HttpRequest, reference: str) -> HttpResponse:
         messages.error(request, "Verifcation failed")
     return redirect('paymentpages:initialize_payment')
 
-
-def page_list(request):
-    pass
-
-def page(request):
-    pass
-
-def updatepage(request):
-    pass
-
-def slug_availability(request):
-    pass
-
-def add_product(request):
-    pass
